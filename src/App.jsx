@@ -23,6 +23,10 @@ function tareasPendientes() {
     setTareas(tareasActualizadas);
   };
 
+  const manejarEliminarTodasLasTareas = () => {
+    setTareas([]);
+  };
+
   return (
     <Container className="text-center bg-success text-white">
         <h1>MINI TASK DASHBOARD</h1>
@@ -48,9 +52,17 @@ function tareasPendientes() {
             <Button variant="warning text-white fw-bold" onClick={() => manejarEliminarTarea(index)}>
               DELETE
             </Button>
-        </ListGroup.Item>
+          </ListGroup.Item>
         ))}
       </ListGroup>
+      
+      <p className="mt-3">Total: {tareas.length} pending tasks</p>
+
+      {tareas.length > 0 && (
+        <Button variant="danger" onClick={manejarEliminarTodasLasTareas}>
+          Delete all
+        </Button>
+      )}
     </Container>
   );
 }
